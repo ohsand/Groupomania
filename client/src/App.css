@@ -238,6 +238,10 @@ input:invalid {
   margin-top: 15px;
 }
 
+.inputBoxRegister input {
+  margin-bottom: 20px;
+}
+
 @media only screen and (max-width: 600px) {
 
   .loginBox {
@@ -262,6 +266,7 @@ input:invalid {
     padding: 10px;
     margin: 10px;
     margin-top: -40px;
+    margin-bottom: 120px;
   }
 
   #uploadForm textarea {
@@ -274,4 +279,25 @@ input:invalid {
     max-width: 100%;
 }
 
+.Upload {
+  max-width: 90%;
+  height: 440px;
+  padding: 10px;
+  margin: 10px;
+  margin-top: -40px;
+  margin-bottom: 120px;
+}
+
+.Upload textarea {
+  max-width: 85%;
+  margin: 0;
+  padding: 0;
+}
+
+}
+
+@media only screen and (max-width: 400px) {
+.userIcon {
+  display: none;
+}
 }

@@ -186,4 +186,37 @@ router.post('/edit', upload.single("file"), function (req, res, file) {
     // );
 });
 
+router.post('/delete', function (req, res) {
+    const postid = req.body.postid;
+    const username = req.body.username;
+
+    allowEdit(postid, username).then(result => {
+        console.log('row check ===', result);
+        if (result.length) {
+            console.log("you are authorized to delete");
+            // is allowed to edit
+            db.query(
+                `DELETE FROM post WHERE id = "${postid}"`, (err3, results3) => {
+                console.log('post row update success ===', results3);
+                res.send(results3);
+            })
+        } else {
+            allowEditAdmin(postid, username).then(result => {
+                console.log('row check ===', result);
+                if (result.length) {
+                    console.log("you are authorized to delete");
+                    db.query(
+                        `DELETE FROM post WHERE id = "${postid}"`, (err3, results3) => {
+                        console.log('post row update success ===', results3);
+                        res.send(results3);
+                    })
+                } else {
+                    console.log("you are not authorized to delete");
+                }
+            })
+        }
+    })
+
+});
+
 module.exports = router;

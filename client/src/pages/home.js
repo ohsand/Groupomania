@@ -56,6 +56,13 @@ function Home() {
     
   };
 
+  const deletePost = (id) => {
+    Axios.post("http://localhost:3001/post/delete", { username: localStorage.getItem('username'), postid: `${id}` }).then((response) => {
+      console.log("You are attempting to delete a post", response);
+    });
+    window.location.href = "/";
+  };
+
   return (
     <><div className='home'>
       {uploads.map((val) => {
@@ -71,9 +78,12 @@ function Home() {
               }}
             />
             {val.likes}
-            <button onClick={() => {
+            <button class="editbtn" onClick={() => {
                 editPost(val.id);
               }}>modifier ce post</button>
+              <button class="deletebtn" onClick={() => {
+                deletePost(val.id);
+              }}>supprimer ce post</button>
           </div>
         )
       })}

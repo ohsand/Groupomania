@@ -59,6 +59,36 @@ input {
   border-bottom: 5px solid;
 }
 
+.editbtn {
+  width: 100%;
+  padding-right: 10px;
+  display: flex;
+  height: 45px;
+  border-radius: 10px;
+  margin-top: 5px;
+  padding-left: 15px;
+  border-color: #4E5166;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #4E5166;
+  border-bottom: 5px solid;
+}
+
+.deletebtn {
+  width: 100%;
+  padding-right: 10px;
+  display: flex;
+  height: 45px;
+  border-radius: 10px;
+  margin-top: 5px;
+  padding-left: 15px;
+  border-color: #4E5166;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #4E5166;
+  border-bottom: 5px solid;
+}
+
 button:active {
   border-bottom: var(--border);
   transform: translateY(5px);

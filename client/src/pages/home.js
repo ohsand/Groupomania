@@ -3,15 +3,7 @@ import React, { useEffect, useState } from 'react';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp';
-// import { useAsyncValue } from 'react-router-dom';
 import '../App.css';
-import { AutoFixHighSharp } from '@mui/icons-material';
-//import image from './16644430197124927082.png'
-//import images from '../../../server/images';
-//const SERVER = "http://localhost:3001/16644430197124927082.png";
-//const image = 'http://localhost:3001/images/1664455878582selfie.png';
-
-// import image from 'http://localhost:3001/images/1664455878582selfie.png';
 
 function Home() {
 
@@ -27,9 +19,6 @@ function Home() {
   const getData = () => {
     Axios.get("http://localhost:3001/post").then((response) => {
       setUploads(response.data);
-      // response.data.map((val)=> {
-      //   setLikes([...likes, val.likes]);
-      // });
     });
     console.log(likes);
   }
@@ -82,7 +71,11 @@ function Home() {
                 editPost(val.id);
               }}>modifier ce post</button>
               <button class="deletebtn" onClick={() => {
-                deletePost(val.id);
+                var result = window.confirm('Etes vous certain de vouloir supprimer ce post?');
+                if (result == true) {
+                deletePost(val.id); } else {
+                  console.log("Vous avez choisi de ne pas supprimer ce post")
+                }
               }}>supprimer ce post</button>
           </div>
         )

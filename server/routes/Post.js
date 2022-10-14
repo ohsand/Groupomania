@@ -15,6 +15,8 @@ var storage = multer.diskStorage({
 
 var upload = multer({ storage: storage });
 
+//Création d'un post
+
 router.post('/upload', upload.single("file"), function (req, res, file) {
     console.log(req.file, req.body);
     const post = req.body.name;
@@ -31,6 +33,8 @@ router.post('/upload', upload.single("file"), function (req, res, file) {
     );
 });
 
+//Obtenir tous les posts pour la page d'accueil
+
 router.get("/", (req, res) => {
     db.query(
         "SELECT * FROM socialmedia.post ORDER BY id DESC;",
@@ -41,7 +45,7 @@ router.get("/", (req, res) => {
     );
 });
 
-//like route
+//Le système de likes
 
 const rowExists = (id, user) => {
     return new Promise(resolve => {
@@ -161,29 +165,8 @@ router.post('/edit', upload.single("file"), function (req, res, file) {
                     console.log("you are not authorized to edit");
                 }
             })
-            // is not allowed to edit
-            // console.log("you are not authorized to edit");
-            // db.query(
-            //     "INSERT INTO likes (userLiking, postid) VALUES(?,?)", [userLiking, postid], (err, results) => {
-            //         if (err) {
-            //             console.log('like row insert error ===', err);
-            //         }
-            //         db.query("UPDATE post SET likes = likes + 1 WHERE id = ?", postid, (err2, results2) => {
-            //             console.log('post likes row update success ===', results2);
-            //             res.send(results2);
-            //         })
-            //     }
-            // );
         }
     })
-
-    // db.query(
-    //     "INSERT INTO post (post, image, username) VALUES (?, ?, ?);", [post, image, username],
-    //     (err, results) => {
-    //         console.log(err);
-    //         res.send(results);
-    //     }
-    // );
 });
 
 router.post('/delete', function (req, res) {

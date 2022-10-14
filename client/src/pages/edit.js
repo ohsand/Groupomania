@@ -15,6 +15,17 @@ function Post() {
     const [name, setName] = useState()
     const [file, setFile] = useState();
     const username = localStorage.username;
+    const textPost = window.localStorage.getItem("postcontents");
+  //   const postText = event => {
+  //     db.query(
+  //       `SELECT * FROM post WHERE id = ${postid} AND username = '${username}'`, (err, results) => {
+  //         if (err) {
+  //           console.log('authorized ===', err);
+  //       }
+  //       const newPostText = results[0];
+  //       console.log(newPostText);
+  //   }
+  // )};
     
     const edit = event => {
       const data = new FormData();
@@ -40,7 +51,7 @@ function Post() {
                                 <textarea className='textPost' name="text" rows="12" cols="50" onChange={(event) => {
                                   const { value } = event.target;
                                   setName(value);
-                                  }}></textarea>
+                                  }}>{textPost}</textarea>
                         </div>
                         <div className='inputBoxFile'>
                             <span className='label'>Joindre une photo</span>

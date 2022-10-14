@@ -68,6 +68,7 @@ function Home() {
             />
             {val.likes}
             <button class="editbtn" onClick={() => {
+                window.localStorage.setItem('postcontents', `${val.post}`);
                 editPost(val.id);
               }}>modifier ce post</button>
               <button class="deletebtn" onClick={() => {

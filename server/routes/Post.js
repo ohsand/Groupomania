@@ -202,4 +202,14 @@ router.post('/delete', function (req, res) {
 
 });
 
+router.get("/getText", (req, res) => {
+    db.query(
+        "SELECT * FROM socialmedia.post ORDER BY id DESC;",
+        (err, results) => {
+            console.log(err);
+            res.send(results); 
+        }
+    );
+});
+
 module.exports = router;
